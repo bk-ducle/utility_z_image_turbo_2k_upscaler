@@ -1,0 +1,207 @@
+{
+  "input": {
+    "workflow": {
+      "9": {
+        "inputs": {
+          "filename_prefix": "z-image-upscaled",
+          "images": [
+            "108",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      },
+      "77": {
+        "inputs": {
+          "image": "57381e696bc084f0b8e4f8f6b95ca371432eaf8da5b6cffe16c088af16346033.jpg"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "98": {
+        "inputs": {
+          "text": "",
+          "clip": [
+            "103",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Negative Prompt)"
+        }
+      },
+      "99": {
+        "inputs": {
+          "upscale_model": [
+            "106",
+            0
+          ],
+          "image": [
+            "109",
+            0
+          ]
+        },
+        "class_type": "ImageUpscaleWithModel",
+        "_meta": {
+          "title": "ImageUpscaleWithModel"
+        }
+      },
+      "100": {
+        "inputs": {
+          "pixels": [
+            "101",
+            0
+          ],
+          "vae": [
+            "105",
+            0
+          ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+          "title": "VAEEncode"
+        }
+      },
+      "101": {
+        "inputs": {
+          "text": "lanczos",
+          "image": [
+            "99",
+            0
+          ]
+        },
+        "class_type": "ImageScaleBy",
+        "_meta": {
+          "title": "ImageScaleBy"
+        }
+      },
+      "102": {
+        "inputs": {
+          "seed": 1098688918602660,
+          "steps": 5,
+          "cfg": 1,
+          "sampler_name": "dpmpp_2m_sde",
+          "scheduler": "beta",
+          "denoise": 0.33,
+          "model": [
+            "107",
+            0
+          ],
+          "positive": [
+            "104",
+            0
+          ],
+          "negative": [
+            "98",
+            0
+          ],
+          "latent_image": [
+            "100",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "103": {
+        "inputs": {
+          "filename": "qwen_3_4b.safetensors"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+          "title": "CLIPLoader"
+        }
+      },
+      "104": {
+        "inputs": {
+          "text": "masterpiece, 8k",
+          "clip": [
+            "103",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Positive Prompt)"
+        }
+      },
+      "105": {
+        "inputs": {
+          "filename": "ae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "106": {
+        "inputs": {
+          "model_name": "RealESRGAN_x4plus.safetensors"
+        },
+        "class_type": "UpscaleModelLoader",
+        "_meta": {
+          "title": "UpscaleModelLoader"
+        }
+      },
+      "107": {
+        "inputs": {
+          "value": 3,
+          "model": [
+            "110",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingAuraFlow",
+        "_meta": {
+          "title": "ModelSamplingAuraFlow"
+        }
+      },
+      "108": {
+        "inputs": {
+          "samples": [
+            "102",
+            0
+          ],
+          "vae": [
+            "105",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "109": {
+        "inputs": {
+          "text": "lanczos",
+          "image": [
+            "77",
+            0
+          ]
+        },
+        "class_type": "ImageScaleToTotalPixels",
+        "_meta": {
+          "title": "ImageScaleToTotalPixels"
+        }
+      },
+      "110": {
+        "inputs": {
+          "filename": "z_image_turbo_bf16.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      }
+    }
+  }
+}
